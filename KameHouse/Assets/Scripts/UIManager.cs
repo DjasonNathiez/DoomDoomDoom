@@ -1,12 +1,19 @@
 using UnityEngine;
-
+using Helpers;
 public class UIManager : MonoBehaviour
 {
-    //toggle désactivé
-    //le text info descend quand on s'approche d'une zone
-    //le text info peut être bloqué via toggle
+    public static UIManager instance;
+    public GameObject popUpObj;
 
-    private bool isFixed;
-    public RectTransform imageT;
-    
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
 }
