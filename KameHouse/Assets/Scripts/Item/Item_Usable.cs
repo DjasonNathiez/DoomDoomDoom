@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Usable : MonoBehaviour
+[CreateAssetMenu(menuName = "Item/Nouvel Item Consommable", order = 0, fileName = "new conso item")]
+public class Item_Usable : Item, IConsommableItem
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Consommable")]
+    public int modAmount;
 
-    // Update is called once per frame
-    void Update()
+    public AffectedValue affectedValue;
+    public enum AffectedValue
     {
-        
+        Health,
+        Mana
+    }
+    
+    public void Consume()
+    {
+        switch (affectedValue)
+        {
+            case AffectedValue.Health:
+                PlayerManager.instance.currentHealth += modAmount;
+                break;
+            
+            case AffectedValue.Mana:
+                PlayerManager.instance.currentMana += modAmount;
+                break;
+        }
     }
 }

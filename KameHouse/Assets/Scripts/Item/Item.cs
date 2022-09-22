@@ -15,7 +15,7 @@ public class Item : ScriptableObject
     
     public string sellPrice;
     
-    [Range(1, 200)] public string stack;
+    [Range(1, 200)] public int stack;
 
     
     private void OnValidate()

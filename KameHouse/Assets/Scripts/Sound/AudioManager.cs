@@ -28,8 +28,6 @@ public class AudioManager : MonoBehaviour
         foreach (Sound s in sounds)
         {
             clips.Add(s.soundName,s.clip);
-            Debug.Log("added to dictionary " + s.soundName + " + " + s.clip);
-            Debug.Log(clips[s.soundName]);
         }
     }
 

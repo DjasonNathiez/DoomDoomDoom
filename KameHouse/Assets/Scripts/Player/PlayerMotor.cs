@@ -1,3 +1,4 @@
+using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,7 +15,9 @@ public class PlayerMotor : MonoBehaviour
     public enum CurrentController { Gamepad, Keyboard }
 
     private PlayerInputs _inputs;
-    
+
+    private CameraController _cameraController;
+
     #endregion
 
     #region PlayerStates
@@ -50,6 +53,11 @@ public class PlayerMotor : MonoBehaviour
     private int _currentJumpCount;
     public float jumpLenght;
 
+    [Header("Camera")]
+    [SerializeField] 
+    private KeyCode cameraModInput;
+    private Vector2 initMousePos;
+
     #endregion
 
     private void OnEnable()
@@ -78,7 +86,8 @@ public class PlayerMotor : MonoBehaviour
 
         _inputs = new PlayerInputs();
         _rb = GetComponent<Rigidbody>();
-
+        _cameraController = Camera.main.GetComponent<CameraController>();
+        
         currentSpeed = runSpeed;
     }
 
@@ -100,6 +109,9 @@ public class PlayerMotor : MonoBehaviour
         _inputs.Normal.Jump.started += Jump;
         _inputs.Normal.Jump.performed += Jump;
         _inputs.Normal.Jump.canceled += Jump;
+        
+        //Mouse world position
+
         #endregion
         
         //Move
@@ -122,6 +134,12 @@ public class PlayerMotor : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, _rotInputDir *(rotSpeed * Time.deltaTime), 0));
         }
+        
+        
+        //Control Camera
+        // orbital = x
+        // elevation = y
+        
     }
 
     private float DistanceToGround()
