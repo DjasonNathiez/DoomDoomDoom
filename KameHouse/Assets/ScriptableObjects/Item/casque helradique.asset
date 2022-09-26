@@ -17,8 +17,8 @@ MonoBehaviour:
   icon: {fileID: 0}
   goldValue: 4
   silverValue: 53
-  cooperValue: 23
-  sellPrice: 4 gold | 53 silver | 23 cooper
+  cooperValue: 0
+  sellPrice: 4 gold | 53 silver | 0 cooper
   stack: 0
   gearSlot: 0
   dataElements:

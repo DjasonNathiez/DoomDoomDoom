@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Item/Nouvel Item Consommable", order = 0, fileName = "new conso item")]
-public class Item_Usable : Item, IConsommableItem
+public class Item_Usable : Item
 {
     [Header("Consommable")]
     public int modAmount;
@@ -11,19 +11,5 @@ public class Item_Usable : Item, IConsommableItem
     {
         Health,
         Mana
-    }
-    
-    public void Consume()
-    {
-        switch (affectedValue)
-        {
-            case AffectedValue.Health:
-                PlayerManager.instance.currentHealth += modAmount;
-                break;
-            
-            case AffectedValue.Mana:
-                PlayerManager.instance.currentMana += modAmount;
-                break;
-        }
     }
 }

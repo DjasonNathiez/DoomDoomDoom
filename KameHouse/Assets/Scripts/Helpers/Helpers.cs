@@ -1,5 +1,7 @@
 using System;
-using UnityEditor;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -30,7 +32,7 @@ namespace Helpers
 
             // UIManager.instance.popUpObj.GetComponent<RectTransform>().anchoredPosition =
             //     eventData.pointerEnter.GetComponent<RectTransform>().anchoredPosition * UIManager.instance.popUpPadding;
-            //
+            // 
             SetInformationToPopUp(info);
         }
 
@@ -66,6 +68,15 @@ namespace Helpers
         {
             UIManager.instance.popUpObj.SetActive(false);
         }
+
+    }
+
+    public class TypeTools
+    {
+        public static IEnumerable<Type> GetInheritedClasses(Type myType)
+        {
+            return Assembly.GetAssembly(myType).GetTypes().Where(type => type.IsSubclassOf(myType));
+        }                                 
     }
 
     [Serializable]

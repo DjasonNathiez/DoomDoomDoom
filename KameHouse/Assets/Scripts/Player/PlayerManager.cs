@@ -54,25 +54,3 @@ public class PlayerManager : MonoBehaviour, IDamageable, IHealable<int>
     public Item weaponLeft;
     public Item weaponRight;
 }
-
-
-/*private Dictionary<string, uint> scores;
-
-private void Start()
-{
-    scores = new Dictionary<string, uint>();
-        
-    scores.Add("Jaina", 234125123);
-    scores.Add("Aegon", 1234521334);
-        
-    Debug.Log(scores["Jaina"]);
-    Debug.Log(scores["Aegon"]);
-
-    foreach (var VARIABLE in scores)
-    {
-        if (VARIABLE.Value < 1234521334)
-        {
-            Debug.Log(VARIABLE.Key);
-        }
-    }
-}*/
